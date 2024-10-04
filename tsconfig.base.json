@@ -15,6 +15,7 @@
     }
   ],
   "compilerOptions": {
+    "rootDir": ".",
     "baseUrl": ".",
     "paths": {
       "@shared/*": ["shared/*"],
