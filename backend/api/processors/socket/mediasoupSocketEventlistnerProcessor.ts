@@ -1,8 +1,7 @@
 import { Server } from "socket.io";
 import mediasoupService from "../webrtc/createMediasoupProcessor.js";
 import * as mediasoup from 'mediasoup';
-import * as mediasoupEvent from "@shared/constants/mediasoupEventConstant.js";
-const { CONNECT_TRANSPORT, CONSUME, CONSUME_RESUME, CREATE_WEBRTC_TRANSPORT, DISCONNECT, GET_PRODUCERS, JOIN_ROOM, MUTE_UNMUTE, NEW_PARTCIPANT_JOIN, NEW_PRODUCER, PARTICIPANTS_DISCONNECT, PRODUCE_TRANSPORT, TRANSPORT_RECV_CONNECT } = mediasoupEvent;
+import { CONNECT_TRANSPORT, CONSUME, CONSUME_RESUME, CREATE_WEBRTC_TRANSPORT, DISCONNECT, GET_PRODUCERS, JOIN_ROOM, MUTE_UNMUTE, NEW_PARTCIPANT_JOIN, NEW_PRODUCER, PARTICIPANTS_DISCONNECT, PRODUCE_TRANSPORT, TRANSPORT_RECV_CONNECT }  from "@shared/constants/mediasoupEventConstant.js";
 import { consumerContainer, peers, producersContainer, rooms, transportsContainer } from "../../constants/variableConstant.js";
 import PeerService from "../../model/userModel.js";
 import { Transport } from "../webrtc/createTransportProcessor.js";

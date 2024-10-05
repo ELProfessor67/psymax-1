@@ -1,5 +1,4 @@
-import * as chatEvent from "@shared/constants/chatEventsConstant.js";
-const { JOIN_ROOM, MESSAGE,redisChannel } = chatEvent;
+import { JOIN_ROOM, MESSAGE,REDIS_CHANNEL } from "@shared/constants/chatEventsConstant.js";
 import {Redis} from 'ioredis';
 import createSendMessageProcessor from "../chat/sendMessageProcessor.js";
 import createRecieveMessageProcessor from "../chat/receiveMessageProcessor.js";
@@ -28,7 +27,7 @@ class createSocketConnect {
         this.redissub = new Redis(redisUrl);
 
         // Subscribe to the Redis channel
-        this.redissub.subscribe(redisChannel);
+        this.redissub.subscribe(REDIS_CHANNEL);
 
         // Initialize Redis listener
         this.initRedisListener();

@@ -4,11 +4,11 @@ import {config} from 'dotenv';
 import ConnectSocketProcessor from './api/processors/socket/connectSocketProcessor.js';
 import ChatListner from './api/processors/socket/chatSocketEventlistenProcessor.js';
 import MediasoupListner from './api/processors/socket/mediasoupSocketEventlistnerProcessor.js'
-import roomRouter from './api/routes/roomRoute.js';
+import router from './api/routes/index.js';
 
 const chatApp = express();
 const mediasoupApp = express();
-mediasoupApp.use(roomRouter);
+mediasoupApp.use(router);
 config()
 
 

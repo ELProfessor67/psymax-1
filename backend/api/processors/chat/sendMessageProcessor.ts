@@ -1,5 +1,5 @@
 import { Redis } from 'ioredis';
-import * as chatEvent from '@shared/constants/chatEventsConstant';
+import {REDIS_CHANNEL} from '@shared/constants/chatEventsConstant';
 
 interface IData {
     room_id: string,
@@ -9,7 +9,7 @@ interface IData {
 }
 
 const createSendMessageProcessor = (redispub: Redis, data: IData) => {
-    redispub.publish(chatEvent.redisChannel, JSON.stringify(data));
+    redispub.publish(REDIS_CHANNEL, JSON.stringify(data));
 }
 
 export default createSendMessageProcessor
