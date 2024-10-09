@@ -3,8 +3,8 @@ import http from 'http'
 import {config} from 'dotenv';
 import ConnectSocketProcessor from './api/processors/socket/connectSocketProcessor.js';
 import ChatListner from './api/processors/socket/chatSocketEventlistenProcessor.js';
-import MediasoupListner from './api/processors/socket/mediasoupSocketEventlistnerProcessor.js'
 import router from './api/routes/index.js';
+import mediaServer from 'api/routes/medisoupRouter.js';
 
 const chatApp = express();
 const mediasoupApp = express();
@@ -19,14 +19,6 @@ const createChatSocketConnect = new ConnectSocketProcessor();
 createChatSocketConnect.io.attach(chatServer);
 const chatListner = new ChatListner(createChatSocketConnect.io);
 chatListner.initChatListeners();
-
-
-//mediasoup
-const mediaServer = http.createServer(mediasoupApp);
-const createMediasoupSocketConnect = new ConnectSocketProcessor();
-createMediasoupSocketConnect.io.attach(mediaServer);
-const mediasoupListener = new MediasoupListner(createMediasoupSocketConnect.io);
-mediasoupListener.initMediasoupListners();
 
 
 

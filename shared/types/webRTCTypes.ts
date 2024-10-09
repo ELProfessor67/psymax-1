@@ -22,23 +22,28 @@ export interface IPramas {
 }
 
 
-export interface IProceTransportAguments
-{
-    kind:mediasoup.types.MediaKind;
-    rtpParameters:mediasoup.types.RtpParameters;
-    appData:mediasoup.types.AppData
+export interface IProceTransportAguments {
+    kind: mediasoup.types.MediaKind;
+    rtpParameters: mediasoup.types.RtpParameters;
+    appData: mediasoup.types.AppData
 }
 
-export interface IProducerIds{
+export interface IProducerIds {
     producerId: string;
     socketId: string;
 }
 
 
 
-export interface IComsumeMediaArgument
-{
+export interface IComsumeMediaArgument {
     rtpCapabilities: mediasoup.types.RtpCapabilities;
     remoteProducerId: string;
     serverConsumerTransportId: string;
+}
+
+
+export interface IManageMediaArguments {
+    value: boolean;
+    type: 'mic' | 'cam';
+    socketId: string;
 }

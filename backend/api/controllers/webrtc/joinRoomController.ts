@@ -3,7 +3,7 @@ import { peers, rooms } from 'api/constants/variableConstant';
 import { Socket } from 'socket.io';
 import * as mediasoup from 'mediasoup';
 import UserModel from "../../model/userModel.js";
-import { createRoomServer } from 'api/services/wrbrtc/createRoomService.js';
+import { createRoomServer } from 'api/services/user/createRoomService.js';
 import { RtpCapabilities } from 'mediasoup/node/lib/RtpParameters.js';
 import { NEW_PARTCIPANT_JOIN } from '@shared/constants/mediasoupEventConstant.js';
 
