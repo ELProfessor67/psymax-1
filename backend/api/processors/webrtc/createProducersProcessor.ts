@@ -2,7 +2,7 @@ import * as mediasoup from 'mediasoup'
 
 
 
-interface IProducerData {
+export interface IProducerData {
     producerId: string
     socketId: string
 }
