@@ -1,7 +1,13 @@
-import roomRouter from './roomRoute.js';
-import { Router } from 'express';
-const router = Router();
+import chatServer from "./chatRoute";
+import mediaServer from "./medisoupRoute";
 
-router.use('/api/v1/',roomRouter);
 
-export default router;
+export const initRoute = async (MPORT:number,CPORT:number) => {
+    mediaServer.listen(MPORT, () => {
+        console.log(`Mediasoup Server Running on port ${MPORT}`)
+    });
+    
+    chatServer.listen(CPORT, () => {
+        console.log(`Chat Server Running on port ${CPORT}`)
+    });
+}

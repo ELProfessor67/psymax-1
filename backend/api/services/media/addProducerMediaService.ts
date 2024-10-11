@@ -1,5 +1,5 @@
 import * as mediasoup from 'mediasoup';
-import {Producer} from '../../processors/webrtc/createProducersProcessor'
+import {Producer} from '../../processors/media/createProducersMediaProcessor'
 import { peers, producersContainer } from 'api/constants/variableConstant';
 import UserModel from 'api/model/userModel';
 

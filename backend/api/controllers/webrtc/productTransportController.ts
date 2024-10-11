@@ -2,7 +2,7 @@ import { NEW_PRODUCER } from "@shared/constants/mediasoupEventConstant"
 import { IProceTransportAguments } from "@shared/types/webRTCTypes"
 import { peers, producersContainer, transportsContainer } from "api/constants/variableConstant"
 import UserModel from "api/model/userModel"
-import { addProducer } from "api/services/wrbrtc/addProducerService"
+import { addProducer } from "api/services/media/addProducerMediaService"
 import { Socket } from "socket.io"
 
 

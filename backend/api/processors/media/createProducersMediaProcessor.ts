@@ -21,7 +21,7 @@ export class Producer {
 }
 
 
-class ProducerProcessor {
+class ProducerMediaProcessor {
     public producers: Producer[];
 
     constructor(){
@@ -54,4 +54,4 @@ class ProducerProcessor {
 
 }
 
-export default ProducerProcessor;
+export default ProducerMediaProcessor;

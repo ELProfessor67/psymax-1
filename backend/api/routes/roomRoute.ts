@@ -1,5 +1,5 @@
 import express from "express";
-import { createRoom } from "../services/roomService.js";
+import { createRoom } from "../services/user/roomService.js";
 
 const router = express.Router();
 

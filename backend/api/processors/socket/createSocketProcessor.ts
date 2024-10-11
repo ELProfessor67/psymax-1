@@ -1,6 +1,6 @@
 import { Server } from "socket.io";
 
-class ConnectSocketProcessor {
+class CcreatetSocketProcessor {
     private _io: Server;
 
     constructor() {  
@@ -18,4 +18,4 @@ class ConnectSocketProcessor {
 
 }
 
-export default ConnectSocketProcessor;
+export default CcreatetSocketProcessor;

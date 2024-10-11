@@ -1,5 +1,5 @@
 import ConsumerService from "../processors/webrtc/createConsumerProcessor.js";
-import ProducerService from "../processors/webrtc/createProducersProcessor.js";
+import ProducerService from "../processors/media/createProducersMediaProcessor.js";
 import TransportService from "../processors/webrtc/createTransportProcessor.js";
 
 export const rooms = new Map(); // { roomName1: { Router, rooms: [ sicketId1, ... ] }, ...}

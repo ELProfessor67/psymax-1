@@ -1,15 +1,9 @@
-import { Redis } from 'ioredis';
-import {REDIS_CHANNEL} from '@shared/constants/chatEventsConstant';
+import { MESSAGE } from "@shared/constants/chatEventsConstant";
+import { Server } from "socket.io";
 
-interface IData {
-    room_id: string,
-    text: string,
-    name: string,
-    socketId: string
+
+export const sendMessageProcessor = (message:string, io:Server) => {
+    const { room_id, text, name, socketId } = JSON.parse(message);
+    console.log(room_id, text, name, socketId)
+    io.to(room_id).emit(MESSAGE, { message: text, name, socketId });
 }
-
-const createSendMessageProcessor = (redispub: Redis, data: IData) => {
-    redispub.publish(REDIS_CHANNEL, JSON.stringify(data));
-}
-
-export default createSendMessageProcessor

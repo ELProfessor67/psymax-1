@@ -1,6 +1,6 @@
 import { IProducerIds } from "@shared/types/webRTCTypes";
 import { peers, producersContainer } from "api/constants/variableConstant";
-import { IProducerData } from "api/processors/webrtc/createProducersProcessor";
+import { IProducerData } from "api/processors/media/createProducersMediaProcessor";
 import { Socket } from "socket.io";
 
 
