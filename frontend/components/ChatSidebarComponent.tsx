@@ -1,7 +1,7 @@
 import React, { useCallback, useState } from 'react'
 
 import ScrollToBottom from 'react-scroll-to-bottom';
-import useChatStateManage from '../controllers/chatController';
+import useChatStateManage from './ChatStateManage';
 import MessageBox from './MessageBoxComponent';
 import useIsMobile from './Mobile';
 import { PiPaperPlaneTilt } from "react-icons/pi";

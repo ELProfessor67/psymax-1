@@ -12,7 +12,7 @@ import 'swiper/css/scrollbar';
 
 import PermissionButton from '../../../components/PermissionButtonComponent';
 import useCheckPermission from '../../../components/CheckPermission'
-import useManageState from '../../../controllers/webrtcController';
+import useManageState from '../../../components/WebRTCManageState';
 import ParticipantService from '../../../models/participantModel';
 import RenderParticipants from '../../..//components/RenderParticipantsComponent';
 import TestingSidebar from '../../..//components/TestingSidebarComponent';
