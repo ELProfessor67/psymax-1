@@ -1,4 +1,4 @@
-import { IComsumeMediaArgument } from "@shared/types/webRTCTypes";
+import { IComsumeMediaArgument } from "@shared/interfaces/webRTCInterfaces";
 import { consumerContainer, peers, rooms, transportsContainer } from "api/constants/variableConstant";
 import { addConsumer } from "api/services/wrbrtc/addConsumerService";
 import { Router } from "mediasoup/node/lib/types";

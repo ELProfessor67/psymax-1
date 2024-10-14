@@ -1,4 +1,4 @@
-import { IRoomArguments } from '@shared/types/webRTCTypes'
+import { IRoomArguments } from '@shared/interfaces/webRTCInterfaces'
 import { peers, rooms } from 'api/constants/variableConstant';
 import { Socket } from 'socket.io';
 import * as mediasoup from 'mediasoup';

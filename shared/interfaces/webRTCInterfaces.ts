@@ -47,3 +47,9 @@ export interface IManageMediaArguments {
     type: 'mic' | 'cam';
     socketId: string;
 }
+
+export interface IManageAudioArguments {
+    value: boolean,
+    type: 'mic' | 'cam' | 'screen',
+    socketId: string
+}

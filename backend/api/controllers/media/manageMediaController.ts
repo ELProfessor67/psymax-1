@@ -1,5 +1,5 @@
 import { MUTE_UNMUTE } from "@shared/constants/mediasoupEventConstant";
-import { IManageMediaArguments } from "@shared/types/webRTCTypes";
+import { IManageMediaArguments } from "@shared/interfaces/webRTCInterfaces";
 import { peers } from "api/constants/variableConstant";
 import UserModel from "api/model/userModel";
 import { Socket } from "socket.io";

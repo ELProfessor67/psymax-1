@@ -1,5 +1,5 @@
 import { NEW_PRODUCER } from "@shared/constants/mediasoupEventConstant"
-import { IProceTransportAguments } from "@shared/types/webRTCTypes"
+import { IProceTransportAguments } from "@shared/interfaces/webRTCInterfaces"
 import { peers, producersContainer, transportsContainer } from "api/constants/variableConstant"
 import UserModel from "api/model/userModel"
 import { addProducer } from "api/services/media/addProduceMediaService"

@@ -1,4 +1,4 @@
-import { ITransportFunctionArguments, IPramas } from "@shared/types/webRTCTypes";
+import { ITransportFunctionArguments, IPramas } from "@shared/interfaces/webRTCInterfaces";
 import { peers, rooms } from "api/constants/variableConstant";
 import { Socket } from "socket.io";
 import Room from '../../processors/user/manageRoomProcessor'

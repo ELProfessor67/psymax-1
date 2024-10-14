@@ -1,14 +1,9 @@
 import publishMessageProcessor from "api/processors/chat/publishMessageProcessor"
 import {Redis} from "ioredis"
 import { Socket } from "socket.io"
+import { IReciveMessageControllerArguments } from '@shared/interfaces/chatInterfaces'
 
-interface IArguments 
-{
-    room_id:string,
-    text:string,
-    name: string
-}
-export const messageRecieve = async ({room_id, text,name}:IArguments,redisPub:Redis,socket:Socket) => {
+export const messageRecieve = async ({room_id, text,name}:IReciveMessageControllerArguments,redisPub:Redis,socket:Socket) => {
     try {
         publishMessageProcessor(redisPub,{ room_id, text,name,socketId:socket.id });
     } catch (error) {

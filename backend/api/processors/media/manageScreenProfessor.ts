@@ -1,19 +1,16 @@
 import { MUTE_UNMUTE } from "@shared/constants/mediasoupEventConstant";
+import { IManageAudioArguments } from "@shared/interfaces/webRTCInterfaces";
 import { peers } from "api/constants/variableConstant";
 import UserModel from "api/model/userModel";
 import { Socket } from "socket.io"
 
-interface IArguments {
-    value: boolean,
-    type: 'mic' | 'cam' | 'screen',
-    socketId: string
-}
 
-export const manageAudio = async  ({value, type, socketId}:IArguments,socket:Socket)  => {
+
+export const manageScreen = async  ({value, type, socketId}:IManageAudioArguments,socket:Socket)  => {
     try {
         const peer:UserModel = peers.get(socket.id);
         if(type == 'screen'){
-            peer.isMicMute = value;
+            peer.isShareScreen = value;
         }
         peers.set(socketId,peer);
         const room_id = peer.room_id;

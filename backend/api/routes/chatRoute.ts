@@ -3,7 +3,7 @@ import express from 'express';
 import createSockerServer from 'api/processors/socket/createSocketProcessor';
 import {Redis} from 'ioredis';
 import { JOIN_ROOM, MESSAGE, REDIS_CHANNEL } from '@shared/constants/chatEventsConstant';
-import { createRecieveMessageService } from 'api/services/chat/recieveMessageService';
+import { createRecieveMessageService } from 'api/services/chat/receiveMessageService';
 import { joinChatRoom } from 'api/controllers/chat/joinChatRoomController';
 import { messageRecieve } from 'api/controllers/chat/messageRecieveController';
 import {config} from 'dotenv';
