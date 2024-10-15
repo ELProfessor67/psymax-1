@@ -1,9 +1,11 @@
 import { IComsumeMediaArgument } from "@shared/interfaces/webRTCInterfaces";
 import { consumerContainer, peers, rooms, transportsContainer } from "api/constants/variableConstant";
-import { addConsumer } from "api/services/wrbRTC/webRTCService";
+import { addConsumer } from "api/services/webRTC/webRTCService";
 import { Router } from "mediasoup/node/lib/types";
 import { Socket } from "socket.io";
-
+import { MUTE_UNMUTE } from "@shared/constants/mediasoupEventConstant";
+import { IManageMediaArguments } from "@shared/interfaces/webRTCInterfaces";
+import UserModel from "api/model/userModel";
 
 export const consumeMedia = async ({ rtpCapabilities, remoteProducerId, serverConsumerTransportId }:IComsumeMediaArgument, callback: ({params}:{params: any}) => void,socket:Socket) => {
     try {
@@ -66,5 +68,30 @@ export const consumeMedia = async ({ rtpCapabilities, remoteProducerId, serverCo
             }
         })
         console.log('Error While Getting Media: ',(error as Error).message)
+    }
+}
+
+export const consumerMediaResume = async ({ serverConsumerId }:{serverConsumerId:string}) => {
+    try {
+        const consumer = consumerContainer.findConsumerId(serverConsumerId);              
+               await consumer?.resume();
+    } catch (error) {
+        console.log('Error while resume media: ',(error as Error).message)
+    }
+}
+
+export const manageMedia = async ({value, type, socketId}:IManageMediaArguments,socket:Socket) => {
+    try {
+        const peer:UserModel = peers.get(socket.id);
+        if(type == 'mic'){
+            peer.isMicMute = value;
+        }else{
+            peer.isWebCamMute = value;
+        }
+        peers.set(socketId,peer);
+        const room_id = peer.room_id;
+        socket.to(room_id).emit(MUTE_UNMUTE,{value,type,socketId});
+    } catch (error) {
+        console.log('Getting Error while manage media: ',(error as Error).message);
     }
 }

@@ -4,8 +4,8 @@ import createSockerServer from 'api/processors/socket/createSocketProcessor';
 import {Redis} from 'ioredis';
 import { JOIN_ROOM, MESSAGE, REDIS_CHANNEL } from '@shared/constants/chatEventsConstant';
 import { createRecieveMessageService } from 'api/services/chat/chatService';
-import { joinChatRoom } from 'api/controllers/chat/joinChatRoomController';
-import { messageRecieve } from 'api/controllers/chat/messageRecieveController';
+import { joinChatRoom } from 'api/controllers/chat/chatController';
+import { messageRecieve } from 'api/controllers/chat/chatController';
 import {config} from 'dotenv';
 import { Server } from 'socket.io';
 

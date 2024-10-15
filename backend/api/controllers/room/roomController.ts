@@ -3,9 +3,11 @@ import { peers, rooms } from 'api/constants/variableConstant';
 import { Socket } from 'socket.io';
 import * as mediasoup from 'mediasoup';
 import UserModel from "../../model/userModel.js";
-import { createRoomServer } from 'api/services/user/userService.js';
+import { createRoomServer } from 'api/services/room/roomService.js';
 import { RtpCapabilities } from 'mediasoup/node/lib/RtpParameters.js';
 import { NEW_PARTCIPANT_JOIN } from '@shared/constants/mediasoupEventConstant.js';
+import { Request, Response } from "express";
+import generateRandomString from "@shared/utils/generateRandomString";
 
 export const joinRoom = async ({ room_id, username, isMicMute, isWebCamMute }: IRoomArguments, callback: (socketId:string,rtpCapabilities:RtpCapabilities,participants:UserModel[]) => void,socket:Socket) => {
     try {
@@ -33,3 +35,19 @@ export const joinRoom = async ({ room_id, username, isMicMute, isWebCamMute }: I
         console.log('Error while user join room : ',(error as Error).message);
     }
 }
+
+
+export const createRoom = (req: Request, res: Response) => {
+    try {
+      const id = generateRandomString();
+      res.status(200).json({
+        success: false,
+        id,
+      });
+    } catch (error) {
+      res.status(500).json({
+        success: false,
+        message: (error as Error).message,
+      });
+    }
+  };

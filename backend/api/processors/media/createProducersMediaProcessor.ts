@@ -1,11 +1,6 @@
+import { IProducerData } from '@shared/interfaces/webRTCInterfaces';
 import * as mediasoup from 'mediasoup'
 
-
-
-export interface IProducerData {
-    producerId: string
-    socketId: string
-}
 
 export class Producer {
     public socketId:string

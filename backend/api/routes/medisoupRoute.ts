@@ -1,9 +1,9 @@
 import http from 'http';
 import createSockerServer from 'api/processors/socket/createSocketProcessor';
 import { CONNECT_TRANSPORT, CONSUME, CONSUME_RESUME, CREATE_WEBRTC_TRANSPORT, DISCONNECT, GET_PRODUCERS, JOIN_ROOM, MUTE_UNMUTE, PRODUCE_TRANSPORT, TRANSPORT_RECV_CONNECT } from '@shared/constants/mediasoupEventConstant';
-import { connectTransport, createWebRtcTransport, getProducer, produceTransport, transportConnect, userDisconnect } from 'api/controllers/webRTC';
-import {consumeMedia,consumerMediaResume, manageMedia} from 'api/controllers/media';
-import { joinRoom } from 'api/controllers/user';
+import { connectTransport, createWebRtcTransport, getProducer, produceTransport, transportConnect, userDisconnect } from 'api/controllers/webRTC/webRTCController';
+import {consumeMedia,consumerMediaResume, manageMedia} from 'api/controllers/media/mediaController';
+import { joinRoom } from 'api/controllers/room/roomController';
 import { Server } from 'socket.io';
 
 
