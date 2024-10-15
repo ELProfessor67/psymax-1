@@ -4,10 +4,10 @@ import { CONNECT_TRANSPORT, CONSUME, CONSUME_RESUME, CREATE_WEBRTC_TRANSPORT, GE
 import React, { Dispatch, MutableRefObject, SetStateAction, useCallback, useEffect, useRef, useState } from 'react'
 import { io, Socket } from "socket.io-client";
 import * as mediasoupClient from 'mediasoup-client';
-import { ClientToServerEvents, IProducerData, ServerToClientEvents } from '../types/socketType';
+import { ClientToServerEvents, IProducerData, ServerToClientEvents } from '@shared/interfaces/chatSocketInterfaces';
 import ParticipantService from '../models/participantModel';
 import UserMediaService from '../models/mediaModel';
-import { IConsumingTransport } from '../types/otherType';
+import { Transport } from 'mediasoup-client/lib/types'
 
 export interface IVideoRef {
     [key: string]: HTMLVideoElement
@@ -19,6 +19,14 @@ export interface IVideoRef {
   export interface IVideoTraks {
     [key: string]: MediaStreamTrack
   }
+
+interface IConsumingTransport {
+    consumerTransport: Transport
+    serverConsumerTransportId: string
+    producerId: string
+    consumer: mediasoupClient.types.Consumer,
+    socketId: string
+}
   
 let params = {
     encodings: [
@@ -43,7 +51,7 @@ let params = {
     }
 }
 
-const useManageState = (room_id: string, username: string,isWebCamMute:boolean,isMicMute:boolean,videoCanvasRef:MutableRefObject<HTMLVideoElement | null>,canvasRef:MutableRefObject<HTMLCanvasElement | null>,isBlur:boolean,isScreenShare:boolean,setSuperForceRender:React.Dispatch<React.SetStateAction<number>>,setPermisstionOpen:Dispatch<SetStateAction<boolean>>,setIsScreenShare:Dispatch<SetStateAction<boolean>>, setSelected:Dispatch<SetStateAction<number>>) => {
+const useManageState = (room_id: string | undefined, username: string,isWebCamMute:boolean,isMicMute:boolean,videoCanvasRef:MutableRefObject<HTMLVideoElement | null>,canvasRef:MutableRefObject<HTMLCanvasElement | null>,isBlur:boolean,isScreenShare:boolean,setSuperForceRender:React.Dispatch<React.SetStateAction<number>>,setPermisstionOpen:Dispatch<SetStateAction<boolean>>,setIsScreenShare:Dispatch<SetStateAction<boolean>>, setSelected:Dispatch<SetStateAction<number>>) => {
     const [socketId, setSocketId] = useState<string | null>(null);
     const [, forceRender] = useState(false);
   

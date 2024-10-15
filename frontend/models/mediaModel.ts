@@ -30,45 +30,6 @@ class MediaModel {
 
    async getUserMedia():Promise<MediaStreamTrack[] | null[]>{
     try {
-        // const stream:MediaStream = await window.navigator.mediaDevices.getUserMedia({
-        //     audio: true,
-        //     video: {
-        //       width: {
-        //         min: 640,
-        //         max: 1920,
-        //       },
-        //       height: {
-        //         min: 400,
-        //         max: 1080,
-        //       }
-        //     }
-        // });
-       
-        // this.audioTrack = stream.getAudioTracks()[0];
-        // this.videoTrack = stream.getVideoTracks()[0];
-
-        // if (this.videoCanvasRef.current) {
-        //   this.videoCanvasRef.current.srcObject = new MediaStream([this.videoTrack]);
-        //   this.videoCanvasRef.current.onloadedmetadata = async () => {
-        //     // Ensure the video is ready to play before processing frames
-        //     await this.videoCanvasRef.current?.play();
-  
-        //     // Start the blurring process once the video is ready
-        //     if (this.segmenter) {
-              
-        //       this.blurBackground(this.segmenter, this.isBlur ? 10 : 0);
-        //     }
-        //   };
-        // }
-        // if(this.canvasRef.current){
-
-        //   const stream = this.canvasRef.current?.captureStream(30);
-        //   const tracks = stream.getVideoTracks();
-        //   this.canvasTrack = tracks[0];
-        // }
-        
-        // return [this.canvasTrack as MediaStreamTrack,this.audioTrack]
-        // // return [this.videoTrack,this.audioTrack]
         const devices = await navigator.mediaDevices.enumerateDevices();
         const videoInput = devices.find(device => device.kind === 'videoinput');
 

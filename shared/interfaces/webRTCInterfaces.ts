@@ -1,5 +1,7 @@
 import * as mediasoup from 'mediasoup'
 import { IceCandidate } from 'mediasoup/node/lib/fbs/web-rtc-transport'
+import { Transport } from 'mediasoup-client/lib/types'
+import * as mediasoupClient from 'mediasoup-client'
 
 export interface IRoomArguments {
     room_id: string;
@@ -51,5 +53,20 @@ export interface IManageMediaArguments {
 export interface IManageAudioArguments {
     value: boolean,
     type: 'mic' | 'cam' | 'screen',
+    socketId: string
+}
+
+
+export interface IConsumingTransport {
+    consumerTransport: Transport
+    serverConsumerTransportId: string
+    producerId: string
+    consumer: mediasoupClient.types.Consumer,
+    socketId: string
+}
+
+
+export interface IProducerData {
+    producerId: string
     socketId: string
 }

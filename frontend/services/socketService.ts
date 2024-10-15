@@ -1,7 +1,7 @@
 import { Socket } from "socket.io-client";
 import { MutableRefObject } from "react";
 import { io } from "socket.io-client";
-import { ClientToServerEvents, ServerToClientEvents } from "../types/socketType";
+import { ClientToServerEvents, ServerToClientEvents } from "@shared/interfaces/chatSocketInterfaces";
 
 
 class SocketService {

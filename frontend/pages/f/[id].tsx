@@ -2,7 +2,7 @@
 import { Navigation, Pagination, Scrollbar, A11y } from 'swiper/modules';
 import React, { useCallback, useEffect, useRef, useState } from 'react'
 import { Swiper, SwiperSlide, useSwiper } from 'swiper/react';
-
+import {useRouter} from 'next/router';
 
 // Import Swiper styles
 import 'swiper/css';
@@ -10,18 +10,18 @@ import 'swiper/css/navigation';
 import 'swiper/css/pagination';
 import 'swiper/css/scrollbar';
 
-import PermissionButton from '../../../components/PermissionButtonComponent';
-import useCheckPermission from '../../../components/CheckPermission'
-import useManageState from '../../../components/WebRTCManageState';
-import ParticipantService from '../../../models/participantModel';
-import RenderParticipants from '../../..//components/RenderParticipantsComponent';
-import TestingSidebar from '../../..//components/TestingSidebarComponent';
-import PermissionDialog from '../../..//components/PermissionDialogComponent';
-import ChatSidebar from '../../..//components/ChatSidebarComponent';
+import PermissionButton from '@/components/PermissionButtonComponent';
+import useCheckPermission from '@/components/CheckPermission'
+import useManageState from '@/components/WebRTCManageState';
+import ParticipantService from '@/models/participantModel';
+import RenderParticipants from '@/components/RenderParticipantsComponent';
+import TestingSidebar from '@/components/TestingSidebarComponent';
+import PermissionDialog from '@/components/PermissionDialogComponent';
+import ChatSidebar from '@/components/ChatSidebarComponent';
 import { PiMicrophone, PiMicrophoneSlash, PiVideoCameraSlash, PiVideoCamera, PiAirplay, PiGear, PiPhoneX, PiChats, PiAddressBook } from "react-icons/pi";
-import Sidebar from '../../..//components/SidebarComponent';
-import useIsMobile from '../../../components/Mobile';
-import RenderParticipantsMobile from '../../..//components/RenderParticipantsMobileComponent';
+import Sidebar from '@/components/SidebarComponent';
+import useIsMobile from '@/components/Mobile';
+import RenderParticipantsMobile from '@/components/RenderParticipantsMobileComponent';
 import { IoIosArrowBack, IoIosArrowForward } from "react-icons/io";
 
 
@@ -38,10 +38,9 @@ interface IProps {
 
 
 const page: React.FC<IProps> = ({ params, searchParams }) => {
-
-    const room_id = params.id;
-    console.log(room_id, 'room_id')
-    const username = localStorage.getItem('name') || 'psymax user'
+    const router = useRouter();
+    const room = router.query.id;
+    const username = window?.localStorage.getItem('name') || 'psymax user'
 
 
     const [testingOpen, setTestingOpen] = useState(false);
@@ -58,6 +57,12 @@ const page: React.FC<IProps> = ({ params, searchParams }) => {
     const [sidebarOpen, setSideBarOpen] = useState(false);
     const [selectedSideBar, setSelectedSide] = useState<'chat' | 'settings'>('chat');
     const [showbtn, setshowbtn] = useState(false);
+    const [room_id,setRoom_id] = useState(room);
+
+    //here we add room id
+    useEffect(() => {
+        setRoom_id(room);
+    },[room])
 
 
     const isMobile = useIsMobile()
@@ -75,7 +80,7 @@ const page: React.FC<IProps> = ({ params, searchParams }) => {
 
 
     const { audioPermisson, cameraPermisson } = useCheckPermission(setPermisstionOpen);
-    const { handleJoin, participantsRef, videosElementsRef, audiosElementRef, socketIdRef, videoTrackRef, handleMuteUnmute, remoteVideoTracksRef, handleScreenShare, displayTrackRef } = useManageState(room_id, username, isWebCamMute, isMicMute, videoCanvasRef, canvasRef, isBlur, isScreenShare, setSuperForceRender, setPermisstionOpen, setIsScreenShare, setSelected);
+    const { handleJoin, participantsRef, videosElementsRef, audiosElementRef, socketIdRef, videoTrackRef, handleMuteUnmute, remoteVideoTracksRef, handleScreenShare, displayTrackRef } = useManageState(room_id as string, username, isWebCamMute, isMicMute, videoCanvasRef, canvasRef, isBlur, isScreenShare, setSuperForceRender, setPermisstionOpen, setIsScreenShare, setSelected);
 
 
 
@@ -366,7 +371,7 @@ const page: React.FC<IProps> = ({ params, searchParams }) => {
                 <Sidebar open={sidebarOpen} onClose={() => setSideBarOpen(false)}>
                     {
                         selectedSideBar == 'chat' ?
-                            <ChatSidebar open={chatOpen} onClose={() => setChatOpen(false)} name={username} room_id={room_id} />
+                            <ChatSidebar open={chatOpen} onClose={() => setChatOpen(false)} name={username} room_id={room_id as string} />
                             :
                             <TestingSidebar open={testingOpen} onClose={() => setTestingOpen(false)} setIsBlur={setIsBlur} isBlur={isBlur} audioPermisson={audioPermisson} cameraPermisson={cameraPermisson} />
                     }

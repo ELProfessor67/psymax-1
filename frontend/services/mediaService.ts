@@ -1,6 +1,6 @@
 import { Socket } from "socket.io-client";
 import { MUTE_UNMUTE, SCREEN_SHARE } from "@shared/constants/mediasoupEventConstant";
-import { ClientToServerEvents, ServerToClientEvents } from "../types/socketType";
+import { ClientToServerEvents, ServerToClientEvents } from "@shared/interfaces/chatSocketInterfaces";
 
 
 

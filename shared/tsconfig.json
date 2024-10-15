@@ -14,7 +14,8 @@
     "declaration": true,
     "composite": true,
     "paths": {
-      "@shared/*": ["./*"]
+      "@shared/*": ["./*"],
+      "@frontend/*": ["../frontend/*"]
     }
   },
   "include": ["**/*.ts"],

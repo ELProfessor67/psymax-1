@@ -1,6 +1,6 @@
 import { MutableRefObject } from "react";
 import { io, Socket } from "socket.io-client";
-import { ChatClientToServerEvents,ChatServerToClientEvents } from '../types/chatSocketType';
+import { ChatClientToServerEvents,ChatServerToClientEvents } from '@shared/interfaces/chatSocketInterfaces';
 import { useCallback, useEffect, useRef, useState } from "react";
 import { JOIN_ROOM, MESSAGE } from "@shared/constants/chatEventsConstant";
 import { IUserMessage } from "./ChatSidebarComponent";

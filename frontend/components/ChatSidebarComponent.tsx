@@ -10,7 +10,7 @@ interface IProps {
     open: Boolean;
     onClose: () => void;
     name: string;
-    room_id: string;
+    room_id: string | undefined;
 }
 
 export interface IUserMessage {
@@ -24,7 +24,7 @@ export interface IUserMessage {
 const ChatSidebar: React.FC<IProps> = ({ open, onClose,name,room_id }) => {
     const [messages,setMessages] = useState<IUserMessage[]>([]);
     const [message,setMessage] = useState('');
-    const {handleMessageSend} = useChatStateManage(name,room_id,setMessages);
+    const {handleMessageSend} = useChatStateManage(name,room_id as string,setMessages);
     const isModile = useIsMobile();
 
 

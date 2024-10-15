@@ -1,6 +1,6 @@
 'use client'
-import { useRouter, useSearchParams } from 'next/navigation';
-import React, { FC, useCallback, useState } from 'react'
+import { useRouter } from 'next/router';
+import React, { FC, useCallback, useEffect, useState } from 'react'
 import { GrPowerReset } from "react-icons/gr";
 
 function generateRandomString() {
@@ -23,17 +23,23 @@ function generateRandomString() {
 
 interface Iprops 
 {
-  searchParams: {
+  params: {
   room: string
   }
 }
 
-const page:FC<Iprops> = ({searchParams}) => {
-  const {room} = searchParams
+const page:FC<Iprops> = (props) => {
+  const router = useRouter();
+
+  const {room} = router.query;
   const [room_id, setRoom_id] = useState(room);
   const [name, setName] = useState('');
 
-  const router = useRouter();
+
+  useEffect(() => {
+    setRoom_id(room);
+  },[room])
+
   
 
 
@@ -47,7 +53,7 @@ const page:FC<Iprops> = ({searchParams}) => {
   const handleJoin = useCallback((e: React.FormEvent<HTMLFormElement>) => {
    
     e.preventDefault();
-    if(room_id.length < 6){
+    if(room_id && room_id.length < 6){
       return
     }
     router.push(`/f/${room_id}`);
