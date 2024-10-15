@@ -1,14 +1,8 @@
 import { Redis } from 'ioredis';
 import {REDIS_CHANNEL} from '@shared/constants/chatEventsConstant';
+import { IRedisPublicData } from '@shared/interfaces/chatInterfaces';
 
-interface IData {
-    room_id: string,
-    text: string,
-    name: string,
-    socketId: string
-}
-
-const publishMessageProcessor = (redispub: Redis, data: IData) => {
+const publishMessageProcessor = (redispub: Redis, data: IRedisPublicData) => {
     redispub.publish(REDIS_CHANNEL, JSON.stringify(data));
 }
 

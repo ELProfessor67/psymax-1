@@ -1,7 +1,10 @@
 import { rooms } from 'api/constants/variableConstant';
 import * as mediasoup from 'mediasoup'
 import Room from "../../processors/user/manageRoomProcessor";
-import mediasoupService from "../../processors/webrtc/createMediasoupProcessor.js";
+import mediasoupService from "../../processors/webRTC/createMediasoupProcessor.js";
+import { Request, Response } from "express";
+import generateRandomString from "@shared/utils/generateRandomString";
+
 
 export const createRoomServer = async (room_id: string, socketId: string): Promise<mediasoup.types.Router>  => {
     let router: mediasoup.types.Router;
@@ -16,3 +19,19 @@ export const createRoomServer = async (room_id: string, socketId: string): Promi
     }
     return router;
 }
+
+
+export const createRoom = (req: Request, res: Response) => {
+    try {
+      const id = generateRandomString();
+      res.status(200).json({
+        success: false,
+        id,
+      });
+    } catch (error) {
+      res.status(500).json({
+        success: false,
+        message: (error as Error).message,
+      });
+    }
+  };

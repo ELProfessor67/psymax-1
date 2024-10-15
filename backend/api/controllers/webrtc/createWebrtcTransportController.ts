@@ -2,7 +2,7 @@ import { ITransportFunctionArguments, IPramas } from "@shared/interfaces/webRTCI
 import { peers, rooms } from "api/constants/variableConstant";
 import { Socket } from "socket.io";
 import Room from '../../processors/user/manageRoomProcessor'
-import { addTransport } from "api/services/wrbrtc/addTransportService";
+import { addTransport } from "api/services/wrbRTC/webRTCService";
 
 
 export const createWebRtcTransport = async ({ consumer }:ITransportFunctionArguments, callback:(argument:{params:IPramas}) => void,socket:Socket) => {
